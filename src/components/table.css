@@ -1,0 +1,20 @@
+.shorten-text {
+    max-width: 100px; /* Adjust the maximum width as needed */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.parent-container
+{
+position: relative;
+height: 50vh;
+}
+
+.child-container
+{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}

@@ -1,0 +1,105 @@
+.title
+    {
+      font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+    }
+
+    .inner {
+    height: 70vh;
+    background-color: whitesmoke;
+    margin-top: 13vh; /* Add relative positioning to the inner container */
+}
+
+h3
+{
+  font-family: "Teko", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.parent {
+    height: 100%; /* Set height of parent to match its container */
+    overflow: hidden; /* Hide any overflow */
+    position: relative;
+}
+
+.parent img {
+    position: absolute; /* Set image to absolute positioning */
+    width: 100%; /* Ensure image covers parent horizontally */
+    height: 100%; /* Ensure image covers parent vertically */
+    object-fit: cover; /* Cover the entire space while maintaining aspect ratio */
+    top: 50%; /* Position image at the top */
+    left: 50%; /* Position image at the left */
+    transform: translate(-50%, -50%); /* Center the image */
+}
+
+/* Custom CSS to remove blue border on input boxes when hovering */
+.form-control:focus {
+    box-shadow: none;
+}
+
+/* Optional: Remove outline on input boxes when focused in Firefox */
+.form-control:focus:not(:-moz-focusring) {
+    box-shadow: none;
+}
+.btn-i {
+    background-color: transparent; /* Set background color to transparent */
+    color: inherit; /* Inherit text color */
+    border: none; /* Remove border */
+    box-shadow: none; /* Remove box shadow */
+    padding: 0; /* Remove padding */
+    cursor: pointer; /* Change cursor to pointer */
+}
+p
+{
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+a{
+  text-decoration: none;
+}
+
+a:hover
+{
+  color: darkgreen;
+}
+
+.welcome
+{
+  background: rgba( 255, 255, 255, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+width: 90%;
+}
+
+
+.text-overlay {
+      position: absolute;
+      top: 85%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+     @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    /* Apply typing animation to the .title element */
+    .animation {
+      overflow: hidden;
+      display: inline-block;
+      border-right: .15em solid orange;
+      white-space: nowrap;
+      margin: 0;
+      padding: 0;
+      animation: typing 2s steps(40, end) infinite;
+    }

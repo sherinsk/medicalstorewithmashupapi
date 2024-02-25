@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+
+.form-control:focus {
+    border-color: navajowhite;
+    box-shadow: none;
+  }
+
+.form-select:focus {
+    border-color: navajowhite;
+    box-shadow: none;
+  }
+
+  .heading{
+    font-family: "Protest Guerrilla", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+  }
