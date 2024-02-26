@@ -104,6 +104,8 @@ const Home = () => {
   }
 
   async function handleInputChange(e) {
+    try
+    {
     setLoading(true)
     const token=localStorage.getItem('token');
     const header={headers:{'Authorization':`Bearer ${token}`}}
@@ -120,6 +122,11 @@ const Home = () => {
     setMedicine(response.data);
     setLoading(false)
     setCurrentPage(1)
+    }
+    }
+    catch(err)
+    {
+      navigate('/login')
     }
     }
 
