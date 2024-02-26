@@ -57,6 +57,7 @@ async function Attemptlogin()
   }
   catch(error)
   {
+    setLoading(false)
     console.log(error.message)
 
   }
