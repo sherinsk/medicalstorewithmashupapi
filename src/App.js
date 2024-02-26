@@ -21,12 +21,13 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/login" element={isLoggedin?<Navigate to="/"/>:<Login/>}/>
-          <Route path="/" element={isLoggedin?<Home/>:<Navigate to="/login"/>} />
+          <Route exact path="/" element={isLoggedin?<Home/>:<Navigate to="/login"/>} />
           <Route path="/contact" element={isLoggedin?<Contact/>:<Navigate to="/login"/>} />
           <Route path="/addmedicine" element={isLoggedin?<Addmedicine/>:<Navigate to="/login"/>}/>
           <Route path="/about" element={isLoggedin?<About/>:<Navigate to="/login"/>}/>
           <Route path="/view/:id" element={isLoggedin?<Viewmedicine/>:<Navigate to="/login"/>}/>
           <Route path="/editmedicine/:id" element={isLoggedin?<Editmedicine/>:<Navigate to="/login"/>}/>
+          <Route path="/*" element={<Navigate to="/login" />} />
         </Routes> 
       </div>
     </Router>
