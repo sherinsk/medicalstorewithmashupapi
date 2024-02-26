@@ -8,6 +8,8 @@ import { loginSuccess } from "../authSlice";
 import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import './signinsignup.css';
 import Loading2 from "./loading2";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Signin(props)
 {
@@ -29,6 +31,19 @@ function passwordhideshow()
 
 const [email,setEmail]=useState("");
 const [password,setPassword]=useState("");
+
+const notify = (data) => {toast(data, {
+  position: "bottom-center",
+  autoClose: 2000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "dark"
+  })};
+
+
 
 function emailinput(e)
 {
@@ -57,8 +72,9 @@ async function Attemptlogin()
   }
   catch(error)
   {
-    console.log(error.message)
-
+    setLoading(false);
+    const err="🚫Invalid Credentials";
+    notify(err)
   }
 }
 
@@ -76,6 +92,20 @@ async function Attemptlogin()
             <div className="d-grid gap-2">
               <button className="btn btn-success" onClick={Attemptlogin} type="button"><b>{loading?<Loading2/>:'SIGN IN'}</b></button>
               <p className="text-center">Don't have an account?<span><a onClick={handleClick}>Signup here</a></span></p>
+            </div>
+            <div>
+            <ToastContainer
+            position="bottom-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            />
             </div>
         </div>
     )

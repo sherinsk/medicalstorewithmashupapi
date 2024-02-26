@@ -55,6 +55,13 @@ function Editmedicine()
 	{
 		try
 		{
+		if(name.trim()===""||company.trim()==""||date.trim()==="")
+		{
+		const data="Fields can't be empty";
+		notify(data);
+		}
+		else
+		{
 		const editedmedicine={name:name,company:company,expiry_date:date};
 		const token=localStorage.getItem('token');
 		const header={headers:{'Authorization':`Bearer ${token}`}}
@@ -64,6 +71,8 @@ function Editmedicine()
 		setTimeout(() => {
             navigate('/');
         }, 1200)
+
+		}
 		}
 		catch(err)
 		{

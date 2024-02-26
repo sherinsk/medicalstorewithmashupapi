@@ -77,6 +77,7 @@ async function PostRegisterData() {
     }
     }
     catch(error) {
+    setLoading(false)
     if (error.response && error.response.data && error.response.data.errors) {
       const errors = error.response.data.errors;
       

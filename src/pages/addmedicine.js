@@ -38,6 +38,13 @@ function Addmedicine()
 	{
 		try
 		{
+		if(name.trim()===""||company.trim()==""||date.trim()==="")
+		{
+			const data="Fields can't be empty";
+			notify(data);
+		}
+		else
+		{
 		const postmed={name:name,company:company,expiry_date:date}
 		const token=localStorage.getItem('token');
         const header={headers:{'Authorization':`Bearer ${token}`}}
@@ -47,6 +54,7 @@ function Addmedicine()
 		setTimeout(() => {
             navigate('/');
         }, 2100)
+	    }
 	    }
 		catch(err)
 		{
