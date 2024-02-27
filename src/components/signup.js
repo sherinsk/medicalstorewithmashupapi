@@ -24,6 +24,7 @@ function Signup(props)
 		})};
   
 const [showpwd,setShowpwd]=useState(true);
+const [showpwd2,setShowpwd2]=useState(true);
 
 function handleClick(e) {
     e.preventDefault();
@@ -33,6 +34,11 @@ function handleClick(e) {
 function passwordhideshow()
 {
   setShowpwd(!showpwd)
+}
+
+function passwordhideshow2()
+{
+  setShowpwd2(!showpwd2)
 }
 
 const [name,setName]=useState("");
@@ -105,11 +111,12 @@ async function PostRegisterData() {
               <input type="text" value={email} onChange={emailinput} className="form-control bg-light border border-2" placeholder="enter your email id" />
             </div>
             <div className="input-group mb-3">
-              <input type="text" value={password} onChange={passwordinput} className="form-control bg-light border border-2" placeholder="enter password" />
+              <input type={showpwd?"password":"text"} value={password} onChange={passwordinput} className="form-control bg-light border border-2" placeholder="enter password" />
+              <span className="input-group-text"><button onClick={passwordhideshow} className="btn-i">{showpwd?<FontAwesomeIcon icon={faEye} />:<FontAwesomeIcon icon={faEyeSlash} />}</button></span>
             </div>
             <div className="input-group mb-3">
-              <input type={showpwd?"password":"text"} value={confirmpwd} onChange={confirmpasswordinput} className="form-control bg-light border border-2" placeholder="confirm password" />
-              <span className="input-group-text"><button onClick={passwordhideshow} className="btn-i">{showpwd?<FontAwesomeIcon icon={faEye} />:<FontAwesomeIcon icon={faEyeSlash} />}</button></span>
+              <input type={showpwd2?"password":"text"} value={confirmpwd} onChange={confirmpasswordinput} className="form-control bg-light border border-2" placeholder="confirm password" />
+              <span className="input-group-text"><button onClick={passwordhideshow2} className="btn-i">{showpwd2?<FontAwesomeIcon icon={faEye} />:<FontAwesomeIcon icon={faEyeSlash} />}</button></span>
             </div>
             <div className="d-grid gap-2">
               <button className="btn btn-success" onClick={PostRegisterData} type="button"><b>{loading?<Loading2/>:'SIGN UP'}</b></button>
