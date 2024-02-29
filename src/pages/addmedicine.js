@@ -6,9 +6,13 @@ import {faCirclePlus} from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from 'react-redux';
+import { logout } from "../authSlice";
 
 function Addmedicine()
 {
+	const token=localStorage.getItem('token');
+	const dispatch=useDispatch();
 	const [name,setName]=useState("");
 	const [company,setCompany]=useState("");
 	const [date,setDate]=useState("");
@@ -58,6 +62,7 @@ function Addmedicine()
 	    }
 		catch(err)
 		{
+			dispatch(logout(token));
 			navigate('/login')
 		}
 	}

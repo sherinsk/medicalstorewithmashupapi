@@ -7,9 +7,13 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from 'react-redux';
+import { logout } from "../authSlice";
 
 function Editmedicine()
 {
+	const token=localStorage.getItem('token');
+	const dispatch=useDispatch();
 	const {id}=useParams();
 	const navigate=useNavigate()
 	const [name,setName]=useState('');
@@ -27,11 +31,8 @@ function Editmedicine()
         setCompany(response.data.company);
         setDate(response.data.expiry_date);
     } catch (err) {
-        const data = '404 not found';
-        notify(data);
-        setTimeout(() => {
-            navigate('/');
-        }, 1200);
+        dispatch(logout(token));
+		navigate('/login')
     }
 }
 
@@ -76,11 +77,8 @@ function Editmedicine()
 		}
 		catch(err)
 		{
-		const data='404 not found';
-		notify(data)
-		setTimeout(() => {
-            navigate('/login');
-        }, 1200)
+	    dispatch(logout(token));
+		navigate('/login')
 
 		}
 

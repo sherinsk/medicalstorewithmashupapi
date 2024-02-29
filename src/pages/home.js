@@ -3,18 +3,21 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Table from '../components/table'
-import Loading from '../components/loading'
-import SearchTable from '../components/searchtable'
+import Loading from '../components/loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCirclePlus,faCircleLeft,faCircleRight} from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import './home.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from 'react-redux';
+import { logout } from "../authSlice";
 
 
 const Home = () => {
-
+  
+  const token=localStorage.getItem('token');
+  const dispatch=useDispatch();
   const x=1;
 
   const navigate=useNavigate()
@@ -64,6 +67,7 @@ const Home = () => {
     }
     catch(err)
     {
+      dispatch(logout(token));
       navigate('/login')
     }
     
@@ -72,7 +76,7 @@ const Home = () => {
   const notify = (data) => {toast(data, {
     position: "bottom-center",
     autoClose: 1000,
-    hideProgressBar: false,
+    hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
@@ -99,6 +103,7 @@ const Home = () => {
     }
     catch(err)
     {
+      dispatch(logout(token));
       navigate('/login')
     }
   }
@@ -112,10 +117,9 @@ const Home = () => {
     const inputValue = e.target.value;
     setInput(inputValue);
     const response = await axios.get(`https://medicalstore.mashupstack.com/api/medicine/search?keyword=${inputValue}`,header);
-    if(response.data.error)
+    if(response.data.errors)
     {
-      var message1="Invalid input"
-      notify(message1)
+      navigate('/login')
     }
     else
     {
@@ -126,6 +130,7 @@ const Home = () => {
     }
     catch(err)
     {
+      dispatch(logout(token));
       navigate('/login')
     }
     }
