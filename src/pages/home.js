@@ -152,7 +152,7 @@ const Home = () => {
               <div className='row mt-3'>
                 <div className='col-8'>
                 <div className="input-group">
-                  <input type="text" value={input} onChange={handleInputChange} placeholder='🔍Search for medicine or category' class="form-control" aria-label="Text input with radio button"/>
+                  <input type="text" value={input} onChange={handleInputChange} placeholder='🔍Search for medicine' class="form-control" aria-label="Text input with radio button"/>
                 </div>
                 </div>
                 <div className='col-4'>
